@@ -71,7 +71,7 @@ class Helper {
     return _numeroDasPerguntas;
   }
 
-  void set setNumeroDasPerguntas(int zeraQuestionario) {
-    _numeroDasPerguntas = -1;
+   set setNumeroDasPerguntas(int zeraQuestionario) {
+    _numeroDasPerguntas = 0;
   }
 }

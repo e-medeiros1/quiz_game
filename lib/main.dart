@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:marimba/screens/quiz_app.dart';
 
@@ -12,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const  QuizPage(),
+      home: QuizPage(),
     );
   }
 }
