@@ -1,7 +1,7 @@
 <p align="center">
       <img src="https://user-images.githubusercontent.com/73318684/179319447-36c9dc99-95bc-4700-b38a-7508349807f1.png" width="150" alt="Logo JobTimer"/>
 
-<h2 align="center"> Quiz game de verdadeiro ou falso!!! </br></br> 
+<h2 align="center"> Quiz game!!! </br></br> 
 
 <img src="https://img.shields.io/badge/dart-C.svg?style=for-the-badge&logo=dart&color=152030">
 <img src="https://img.shields.io/badge/flutter-C.svg?style=for-the-badge&logo=flutter&color=0468D7"> 
