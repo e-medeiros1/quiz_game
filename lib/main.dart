@@ -1,6 +1,6 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:marimba/screens/quiz_app.dart';
-
 
 main() {
   runApp(const MyApp());
@@ -11,9 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QuizPage(),
+      title: 'Quiz App',
+      home: AnimatedSplashScreen(
+          duration: 1000,
+          splash: 'assets/images/icon.png',
+          nextScreen: const QuizPage(),
+          splashTransition: SplashTransition.rotationTransition,
+          backgroundColor: Colors.white),
     );
   }
 }

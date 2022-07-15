@@ -14,14 +14,12 @@ class _QuizPageState extends State<QuizPage> {
   Helper helper = Helper();
   List<Widget> marcaPontos = [];
 
-  limpa() {}
-
   alert() {
     Alert(
       context: context,
       type: AlertType.success,
-      title: "PARABÉNS",
-      desc: "Parabéns por concluir nosso jogo",
+      title: "PARABÉNS!!!",
+      desc: "Obrigado por concluir nosso jogo",
       buttons: [
         DialogButton(
           onPressed: () {
@@ -58,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
         ));
         helper.proximaPergunta();
       }
-      if (helper.numeroDasPerguntas >= 12) {
+      if (marcaPontos.length == 13) {
         alert();
         return;
       }
@@ -67,99 +65,117 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade200,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade200,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Center(
+                  child: Material(
+                    borderRadius: BorderRadius.circular(50),
+                    // color: Colors.white,
+                    elevation: 5,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(0.0, 3.0),
+                            blurStyle: BlurStyle.outer,
+                          ),
+                        ],
+                      ),
+                      height: 400,
+                      child: Center(
+                        child: Text(
+                          helper.obterQuestao(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontFamily: 'Pacifico',
+                            fontSize: 35,
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 1.5,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.yellow.shade50,
-                  ),
-                  height: 400,
-                  child: Center(
-                    child: Text(
-                      helper.obterQuestao(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 35,
-                        color: Colors.black,
-                      ),
-                    ),
+                  color: Colors.white,
+                  height: 50,
+                  width: 400,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: marcaPontos,
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                color: Colors.yellow.shade50,
-                height: 50,
-                width: 400,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: marcaPontos,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: FloatingActionButton(
+                        splashColor: Colors.green.shade200,
+                        elevation: 3,
+                        isExtended: true,
+                        backgroundColor: Colors.white,
+                        onPressed: () => confereResposta(true),
+                        child: const Icon(
+                          Icons.check,
+                          color: Colors.green,
+                          size: 60,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: FloatingActionButton(
+                        splashColor: Colors.red.shade200,
+                        elevation: 3,
+                        backgroundColor: Colors.white,
+                        onPressed: () => confereResposta(false),
+                        child: const Icon(
+                          Icons.close_rounded,
+                          color: Colors.red,
+                          size: 60,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: FloatingActionButton(
-                      elevation: 3,
-                      isExtended: true,
-                      backgroundColor: Colors.white,
-                      onPressed: () => confereResposta(true),
-                      child: const Icon(
-                        Icons.check,
-                        color: Colors.green,
-                        size: 60,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: FloatingActionButton(
-                      elevation: 3,
-                      backgroundColor: Colors.white,
-                      onPressed: () => confereResposta(false),
-                      child: const Icon(
-                        Icons.close_rounded,
-                        color: Colors.red,
-                        size: 60,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

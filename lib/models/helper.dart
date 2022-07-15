@@ -60,18 +60,11 @@ class Helper {
     }
   }
 
-  limpaQuestionario() {
-    if (_numeroDasPerguntas > _allQuestions.length) {
-      _numeroDasPerguntas = 0;
-      _allQuestions.clear;
-    }
-  }
-
   int get numeroDasPerguntas {
     return _numeroDasPerguntas;
   }
 
-   set setNumeroDasPerguntas(int zeraQuestionario) {
+  set setNumeroDasPerguntas(int zeraQuestionario) {
     _numeroDasPerguntas = 0;
   }
 }
